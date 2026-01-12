@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public abstract class Compte {
     private LocalDate dateOuverture;
-    private float solde;
+    private double solde;
 
-    public Compte(float montant) {
+    public Compte(double montant) {
         this.solde = montant;
         this.dateOuverture = LocalDate.now();
     }
 
-    public float consulterSolde() {
+    public double consulterSolde() {
         return this.solde;
     }
 
@@ -31,7 +31,7 @@ public abstract class Compte {
         return this.solde;
     }
 
-    protected void setSolde(float montant) {
+    protected void setSolde(double montant) {
         this.solde = montant;
     }
 

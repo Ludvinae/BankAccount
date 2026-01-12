@@ -1,6 +1,6 @@
 package com.mns.cda.banque.compte;
 
 public interface IRetrait {
-    public boolean retirer(float montant);
+    public boolean retirer(double montant);
 
 }
