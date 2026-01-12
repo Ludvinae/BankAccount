@@ -8,10 +8,24 @@ public class CompteCourant extends Compte implements IRetrait{
         super(montant);
     }
 
+    @Override
+    public boolean deposer(double montant) {
+        if (montant <= 0) {
+            return false;
+        }
+        double solde = getSolde();
+        setSolde(solde + montant);
+        if (bloquer) {
+            if (getSolde() > -DECOUVERT) {
+                bloquer = false;
+            }
+        }
+        return true;
+    }
 
     @Override
     public boolean retirer(double montant) {
-        if (bloquer) {
+        if (bloquer || montant <= 0) {
             return false;
         }
         double solde = this.getSolde();

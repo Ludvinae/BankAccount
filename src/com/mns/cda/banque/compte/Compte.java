@@ -15,7 +15,7 @@ public abstract class Compte {
         return this.solde;
     }
 
-    public boolean deposer(float montant) {
+    public boolean deposer(double montant) {
         if (montant <= 0) {
             return false;
         }

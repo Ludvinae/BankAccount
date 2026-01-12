@@ -11,7 +11,7 @@ public class CompteEpargne extends Compte implements IRetrait{
 
     @Override
     public boolean retirer(double montant) {
-        float solde = this.getSolde();
+        double solde = this.getSolde();
         if (solde < montant) {
             return false;
         }
