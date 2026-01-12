@@ -27,7 +27,7 @@ public abstract class Compte {
         return this.dateOuverture;
     }
 
-    protected float getSolde() {
+    protected double getSolde() {
         return this.solde;
     }
 
