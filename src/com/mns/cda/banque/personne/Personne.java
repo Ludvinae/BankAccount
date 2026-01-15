@@ -70,6 +70,6 @@ public class Personne {
             return;
         }
         Client client = new Client(banqueId);
-        client.ouvrirCompteCourant(montant);
+        client.ouvrirCompteCourant(montant, banqueId);
     }
 }
