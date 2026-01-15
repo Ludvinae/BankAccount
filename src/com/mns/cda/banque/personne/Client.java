@@ -1,32 +1,84 @@
 package com.mns.cda.banque.personne;
 
-import com.mns.cda.banque.Banque;
-import com.mns.cda.banque.compte.Compte;
+import com.mns.cda.banque.compte.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
 
-public class Client{
-    protected UUID numero;
+public class Client extends Role{
+    protected String numero;
     protected HashMap<String, Compte> comptes;
+    private static Integer compteur = 0;
 
 
-    public Client(Banque banque) {
+    public Client(String banqueId) {
+        super(banqueId);
         this.comptes = new HashMap<>();
-        this.numero = UUID.randomUUID();
-        banque.ajouterClient(this.numero, this);
+        this.numero = compteur.toString();
     }
 
-    public UUID getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void ajouterCompte(String nomBanque, Compte compte) {
-        this.comptes.put(nomBanque, compte);
+    public Compte getCompte(String type) {
+        return comptes.get(type);
     }
 
+    public boolean fermerComptes(String type) {
+        if (!comptes.containsKey(type)) {
+            return false;
+        }
+        Compte compte = getCompte(type);
+        comptes.remove(type);
+        return true;
+    }
+
+    public String transfert(Compte compte1, Compte compte2, double montant) {
+        if (!comptes.containsValue(compte1)) {
+            return "Pas de compte " + compte1 + "pour ce client";
+        }
+        if (!comptes.containsValue(compte2)) {
+            return "Pas de compte " + compte2 + "pour ce client";
+        }
+        if (compte1.getClass() == PlanEpargne.class) {
+            return "Opération impossible à partir d'un Plan Epargne";
+        }
+        if (montant <= 0) {
+            return "Montant transféré doit être supérieur à 0";
+        }
+        if (compte1.consulterSolde() < montant) {
+            return "Solde insuffisant";
+        }
+
+        ((IRetrait) compte1).retirer(montant);
+        compte2.deposer(montant);
+        return "Opération effectuée avec succes";
+
+    }
+
+    public boolean ouvrirCompteCourant(double montant) {
+        if (comptes.containsKey("courant")) {
+            return false;
+        }
+        this.comptes.put("courant", new CompteCourant(montant));
+        return true;
+    }
+
+    public boolean ouvrirCompteEpargne(double montant) {
+        if (comptes.containsKey("epargne")) {
+            return false;
+        }
+        this.comptes.put("epargne", new CompteEpargne(montant));
+        return true;
+    }
+
+    public boolean ouvrirPlandEpargne(double montant) {
+        if (comptes.containsKey("plan")) {
+            return false;
+        }
+        this.comptes.put("plan", new PlanEpargne(montant));
+        return true;
+    }
 
 
 
