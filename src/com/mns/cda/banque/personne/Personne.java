@@ -60,7 +60,7 @@ public class Personne {
 
         Banque banque = new Banque(nom, this);
         String banqueId = banque.getBanqueId();
-        Directeur directeur = new Directeur(password, banqueId);
+        Directeur directeur = new Directeur(password, banqueId, this.id);
         this.roles.add(directeur);
 
     }
@@ -69,7 +69,7 @@ public class Personne {
         if (montant <= 0) {
             return;
         }
-        Client client = new Client(banqueId);
+        Client client = new Client(banqueId, this.id);
         client.ouvrirCompteCourant(montant, banqueId);
     }
 }
