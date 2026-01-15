@@ -1,5 +1,8 @@
 package com.mns.cda.banque.compte;
 
+import com.mns.cda.banque.Banque;
+import com.mns.cda.banque.Ville;
+
 public class Iban {
     private String banqueId;
     private String codeClient;
@@ -31,6 +34,11 @@ public class Iban {
 
     @Override
     public String toString() {
-        return banqueId + codeClient + typeCompte + typeCompte;
+        return banqueId + codeClient + typeCompte + compteId;
+    }
+
+    public Compte identifierCompte() {
+        Banque banque = Ville.banques.get(this.banqueId);
+        return banque.getComptes().get(compteId);
     }
 }
