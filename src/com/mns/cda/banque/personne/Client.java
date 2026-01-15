@@ -10,8 +10,8 @@ public class Client extends Role{
     private static Integer compteur = 0;
 
 
-    public Client(String banqueId) {
-        super(banqueId);
+    public Client(String banqueId, String personneId) {
+        super(banqueId, personneId);
         this.comptes = new HashMap<>();
         compteur += 1;
         this.numero = compteur.toString();

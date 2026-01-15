@@ -11,8 +11,8 @@ public class Salarie extends Role{
     private String password;
 
 
-    public Salarie(String password, String banqueId) {
-        super(banqueId);
+    public Salarie(String password, String banqueId, String personneId) {
+        super(banqueId, personneId);
         this.password = password;
 
     }
