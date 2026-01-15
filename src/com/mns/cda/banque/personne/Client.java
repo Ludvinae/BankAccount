@@ -13,6 +13,7 @@ public class Client extends Role{
     public Client(String banqueId) {
         super(banqueId);
         this.comptes = new HashMap<>();
+        compteur += 1;
         this.numero = compteur.toString();
     }
 
