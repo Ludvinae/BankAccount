@@ -47,7 +47,7 @@ public class Ville {
             String adresse = numeroRue + " " + rue;
             String id = Utils.generateCode(nom + prenom);
 
-            personnes.put(id, new Personne(nom, prenom, adresse, id));
+            personnes.put(id, new Personne(nom, prenom, adresse));
             //personnes.add(new Personne(nom, prenom, adresse));
         }
     }
