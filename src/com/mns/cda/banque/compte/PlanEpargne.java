@@ -6,8 +6,8 @@ import java.time.LocalDate;
 
 public class PlanEpargne extends Compte implements IRetrait{
 
-    public PlanEpargne(double montant) {
-        super(montant);
+    public PlanEpargne(double montant, String banqueId, String codeClient) {
+        super(montant, banqueId, codeClient);
     }
 
     @Override

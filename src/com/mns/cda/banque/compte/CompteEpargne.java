@@ -4,8 +4,8 @@ public class CompteEpargne extends Compte implements IRetrait{
 
     protected double TAUX_INTERET = 0.025;
 
-    public CompteEpargne(double montant) {
-        super(montant);
+    public CompteEpargne(double montant, String banqueId, String codeClient) {
+        super(montant, banqueId, codeClient);
     }
 
 

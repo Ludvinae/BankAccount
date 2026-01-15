@@ -4,8 +4,8 @@ public class CompteCourant extends Compte implements IRetrait{
     final int DECOUVERT = 1000;
     boolean bloquer = false;
 
-    public CompteCourant(double montant) {
-        super(montant);
+    public CompteCourant(double montant, String banqueId, String codeClient) {
+        super(montant, banqueId, codeClient);
     }
 
     @Override
