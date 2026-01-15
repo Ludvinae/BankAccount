@@ -2,20 +2,19 @@ package com.mns.cda.banque;
 
 import com.mns.cda.banque.personne.Personne;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.UUID;
+
 
 public class Ville {
-    public static HashMap<UUID, Banque> banques = new HashMap<>();
-    public static HashMap<UUID, Personne> personnes = new HashMap();
+    public static HashMap<String, Banque> banques = new HashMap<>();
+    public static HashMap<String, Personne> personnes = new HashMap();
     public String nom;
 
     public Ville(String nom) {
         this.nom = nom;
     }
 
-    public static void addBanque(UUID banqueId, Banque banque) {
+    public static void addBanque(String banqueId, Banque banque) {
         banques.put(banqueId, banque);
     }
 
@@ -38,7 +37,6 @@ public class Ville {
         };
 
         for (int i = 0; i < 50; i++) {
-            UUID id = UUID.randomUUID();
 
             String nom = noms[(int) (Math.random() * noms.length)];
             String prenom = prenoms[(int) (Math.random() * prenoms.length)];
@@ -47,6 +45,7 @@ public class Ville {
             String rue = rues[(int) (Math.random() * rues.length)];
 
             String adresse = numeroRue + " " + rue;
+            String id = Utils.generateCode(nom + prenom);
 
             personnes.put(id, new Personne(nom, prenom, adresse, id));
             //personnes.add(new Personne(nom, prenom, adresse));
