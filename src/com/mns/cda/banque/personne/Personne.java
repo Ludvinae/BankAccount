@@ -2,11 +2,9 @@ package com.mns.cda.banque.personne;
 
 import com.mns.cda.banque.Banque;
 import com.mns.cda.banque.Utils;
-import jdk.jshell.execution.Util;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class Personne {
     private String nom;
