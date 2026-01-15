@@ -6,8 +6,15 @@ import java.time.LocalDate;
 
 public class PlanEpargne extends Compte implements IRetrait{
 
+    private Iban iban;
+
     public PlanEpargne(double montant, String banqueId, String codeClient) {
         super(montant, banqueId, codeClient);
+        this.iban = new Iban(banqueId, codeClient, "plan", this.getCompteId());
+    }
+
+    public Iban getIban() {
+        return iban;
     }
 
     @Override

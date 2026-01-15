@@ -3,9 +3,16 @@ package com.mns.cda.banque.compte;
 public class CompteCourant extends Compte implements IRetrait{
     final int DECOUVERT = 1000;
     boolean bloquer = false;
+    private Iban iban;
 
     public CompteCourant(double montant, String banqueId, String codeClient) {
         super(montant, banqueId, codeClient);
+
+        this.iban = new Iban(banqueId, codeClient, "courant", this.getCompteId());
+    }
+
+    public Iban getIban() {
+        return iban;
     }
 
     @Override
