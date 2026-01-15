@@ -57,27 +57,27 @@ public class Client extends Role{
 
     }
 
-    public boolean ouvrirCompteCourant(double montant) {
+    public boolean ouvrirCompteCourant(double montant, String banqueId) {
         if (comptes.containsKey("courant")) {
             return false;
         }
-        this.comptes.put("courant", new CompteCourant(montant));
+        this.comptes.put("courant", new CompteCourant(montant, banqueId, this.numero));
         return true;
     }
 
-    public boolean ouvrirCompteEpargne(double montant) {
+    public boolean ouvrirCompteEpargne(double montant, String banqueId) {
         if (comptes.containsKey("epargne")) {
             return false;
         }
-        this.comptes.put("epargne", new CompteEpargne(montant));
+        this.comptes.put("epargne", new CompteEpargne(montant, banqueId, this.numero));
         return true;
     }
 
-    public boolean ouvrirPlandEpargne(double montant) {
+    public boolean ouvrirPlandEpargne(double montant, String banqueId) {
         if (comptes.containsKey("plan")) {
             return false;
         }
-        this.comptes.put("plan", new PlanEpargne(montant));
+        this.comptes.put("plan", new PlanEpargne(montant, banqueId, this.numero));
         return true;
     }
 
