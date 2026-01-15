@@ -1,4 +1,56 @@
 package com.mns.cda.banque;
 
+import com.mns.cda.banque.personne.Personne;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.UUID;
+
 public class Ville {
+    public static HashMap<UUID, Banque> banques = new HashMap<>();
+    public static HashMap<UUID, Personne> personnes = new HashMap();
+    public String nom;
+
+    public Ville(String nom) {
+        this.nom = nom;
+    }
+
+    public static void addBanque(UUID banqueId, Banque banque) {
+        banques.put(banqueId, banque);
+    }
+
+
+
+    public static void genererPersonnes() {
+        String[] noms = {
+                "Martin", "Bernard", "Dubois", "Thomas", "Robert",
+                "Richard", "Petit", "Durand", "Leroy", "Moreau"
+        };
+
+        String[] prenoms = {
+                "Lucas", "Emma", "Louis", "Chloé", "Hugo",
+                "Léa", "Noah", "Camille", "Jules", "Manon"
+        };
+
+        String[] rues = {
+                "rue de la Paix", "avenue Victor Hugo", "boulevard Voltaire",
+                "rue Nationale", "rue des Lilas", "avenue de la République"
+        };
+
+        for (int i = 0; i < 50; i++) {
+            UUID id = UUID.randomUUID();
+
+            String nom = noms[(int) (Math.random() * noms.length)];
+            String prenom = prenoms[(int) (Math.random() * prenoms.length)];
+
+            int numeroRue = 1 + (int) (Math.random() * 200);
+            String rue = rues[(int) (Math.random() * rues.length)];
+
+            String adresse = numeroRue + " " + rue;
+
+            personnes.put(id, new Personne(nom, prenom, adresse, id));
+            //personnes.add(new Personne(nom, prenom, adresse));
+        }
+    }
+
 }
